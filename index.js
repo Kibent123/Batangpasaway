@@ -1,9 +1,7 @@
-const { Client, MessageEmbed, Channel, Message } = require('discord.js');
-const { url } = require('inspector');
+const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-
-
 const defaultColor = 0xFF0000;
+
 // channel ID's
 const botChannelID = '679272688644128789'; // bot-channel ID
 const genChannelID = '731168540140503161'; // gen-channel ID
@@ -13,11 +11,7 @@ const rulesChannelID = '731379484946727003' // rules-channel ID
 const spamChannelID = '679257174811082774' // spam-channel ID
 const promChannelID = '721306801211047936' // promotions-channel ID
 
-
-
-client.on('ready', () => {
-    console.log('Open na!');
-})
+client.on('ready', () => {console.log('Open na!');});
 
 client.on('message', message => {
     // adminMembers 
@@ -260,8 +254,6 @@ client.on('message', message => {
     }
 });
 
-
-
 client.on('guildMemberAdd', member => {
     const genchatChannel = member.guild.channels.cache.find(ch => ch.id === genChannelID);
     const messageEmbed = new MessageEmbed();
@@ -275,6 +267,7 @@ client.on('guildMemberAdd', member => {
         genchatChannel.send(messageEmbed);
     }
 });
+
 client.on('guildMemberRemove', member => {
     const genchatChannel = member.guild.channels.cache.find(ch => ch.id === genChannelID);
     const messageEmbed = new MessageEmbed();
@@ -285,10 +278,8 @@ client.on('guildMemberRemove', member => {
         messageEmbed.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
         messageEmbed.setImage(member.user.displayAvatarURL());
         messageEmbed.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
-        // genchatChannel.send(messageEmbed);
+        genchatChannel.send(messageEmbed);
     }
 });
-
-
 
 client.login(process.env.token);
