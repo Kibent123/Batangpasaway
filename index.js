@@ -33,14 +33,14 @@ bot.on('message', message => {
         if (botChannel) {
             Embed.setTitle("Next Events!")
             Embed.setColor(0xFF0000)
-            Embed.setDescription("");
+            Embed.setDescription("BATANG PASAWAY EVENTS");
             Embed.setImage("https://media.discordapp.net/attachments/731070617670909973/731386377345695884/bpevents.png?width=1015&height=677")
-                .addField("(14, TUES) Mini-games", false)
-                .addField("(18, FRI) Bingo Night", false)
-                .addField("(19, SAT) Jamming Night", false)
-                .addField("(21, TUES) Mini-games", false)
-                .addField("(24, FRI) Bingo Night", false)
-                .addField("(25, SAT) Jamming Night", false)
+                .addField("(14, TUES) Mini-games")
+                .addField("(18, FRI) Bingo Night")
+                .addField("(19, SAT) Jamming Night")
+                .addField("(21, TUES) Mini-games")
+                .addField("(24, FRI) Bingo Night")
+                .addField("(25, SAT) Jamming Night")
             botChannel.send(Embed);
         };
         if (genchatChannel) {
