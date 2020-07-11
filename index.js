@@ -35,12 +35,12 @@ bot.on('message', message => {
             Embed.setColor(0xFF0000)
             Embed.setDescription("BATANG PASAWAY EVENTS");
             Embed.setImage("https://media.discordapp.net/attachments/681100184389681152/731391215513370654/image0.png?width=1441&height=461")
-                .addField("(14, TUES) Mini-games","--------")
-                .addField("(18, FRI) Bingo Night","--------")
-                .addField("(19, SAT) Jamming Night","--------")
-                .addField("(21, TUES) Mini-games","--------")
-                .addField("(24, FRI) Bingo Night","--------")
-                .addField("(25, SAT) Jamming Night","--------")
+                .addField("(14, TUES) Mini-games", "--------")
+                .addField("(18, FRI) Bingo Night", "--------")
+                .addField("(19, SAT) Jamming Night", "--------")
+                .addField("(21, TUES) Mini-games", "--------")
+                .addField("(24, FRI) Bingo Night", "--------")
+                .addField("(25, SAT) Jamming Night", "--------")
             message.channel.send(Embed);
         };
         if (genchatChannel) {
@@ -108,6 +108,14 @@ bot.on('message', message => {
         }
         currentChannel.send(listParticipant);
     }
+    const isRawr = message.content.toLowerCase().indexOf('rawr');
+    if (!message.author.bot && isRawr >= 0) {
+        message.channel
+            .send('Rawr! RaWr! RaaaWr!')
+            .then((response) => response.delete({ timeout: 5000 }));
+    }
+
+
 });
 
 
