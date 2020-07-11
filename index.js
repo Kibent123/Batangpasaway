@@ -14,6 +14,7 @@ const promChannelID = '721306801211047936' // promotions-channel ID
 client.on('ready', () => {console.log('Open na!');});
 
 client.on('message', message => {
+
     // adminMembers 
     const adminList = [
         '504034019802087444',
@@ -32,7 +33,6 @@ client.on('message', message => {
         '624545972185464832'
     ];
     const messageEmbed = new MessageEmbed();
-
 
     // check custom command
     const bpCommand = message.content.toString().toLowerCase().indexOf('!bp');
@@ -66,7 +66,7 @@ client.on('message', message => {
         // !bp events
         if (strippedEventsCommand.indexOf('events') >= 0) {
             if (message.channel.id !== annoChannelID) {
-                messageEmbed.setDescription(`**Please use the !embed command on bot-commands on <#${botChannelID}> channel ONLY.**`);
+                messageEmbed.setDescription(`**Please use the !bp commands on <#${botChannelID}> channel ONLY.**`);
                 message.channel.send(messageEmbed);
             } else {
                 messageEmbed.setTitle("BATANG PASAWAWY PH")
