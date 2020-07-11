@@ -57,7 +57,7 @@ client.on('message', message => {
             messageEmbed.setDescription(`.\n.\nWag ng pilitin.\nDi pa pwede sayo ang **!say** kasi wala ka pang say.\n.\n.\n`);
             messageEmbed.setThumbnail(message.member.user.displayAvatarURL());
         }
-        message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 10000 }));
+        message.channel.send(messageEmbed);
     }
     // !bp Command
     if (!message.author.bot && bpCommand >= 0 && isAdmin >= 0) {
