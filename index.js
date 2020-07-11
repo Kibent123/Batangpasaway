@@ -11,7 +11,7 @@ const rulesChannelID = '731379484946727003' // rules-channel ID
 const spamChannelID = '679257174811082774' // spam-channel ID
 const promChannelID = '721306801211047936' // promotions-channel ID
 
-client.on('ready', () => {console.log('Open na!');});
+client.on('ready', () => { console.log('Open na!'); });
 
 client.on('message', message => {
 
@@ -47,17 +47,19 @@ client.on('message', message => {
     // !say Command
     if (!message.author.bot && sayCommand == 0) {
         messageEmbed.setColor(defaultColor);
-        messageEmbed.setFooter(`This message will self destruct in 10 seconds`);
 
         if (isAdmin >= 0) {
-            messageEmbed.setTitle('A T T E N T I O N  E V E R Y O N E ! ! !');
-            messageEmbed.setDescription(`\n.\n.\n **${message.content.toLowerCase().split('!say')[1].toUpperCase()}**\n.\n.\n`);
+            messageEmbed.setTitle('SERVER ANNOUNCEMENT');
+            messageEmbed.setDescription(`**${message.content.toLowerCase().split('!say')[1].toUpperCase()}**`);
+            messageEmbed.setFooter(`THANK YOU FOR YOUR COOPERATION);
+            message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 10000 }));
         } else {
             messageEmbed.setTitle('Hmmmmmm~ batang pasaway ALERT');
             messageEmbed.setDescription(`.\n.\nWag ng pilitin.\nDi pa pwede sayo ang **!say** kasi wala ka pang say.\n.\n.\n`);
             messageEmbed.setThumbnail(message.member.user.displayAvatarURL());
+            message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 60000 }));
+
         }
-        message.channel.send(messageEmbed);
     }
     // !bp Command
     if (!message.author.bot && bpCommand >= 0 && isAdmin >= 0) {
@@ -159,7 +161,7 @@ client.on('message', message => {
                     messageEmbed.setDescription(`**Please read the rules and regulations in the <#${rulesChannelID}> channel.**`);
                     break;
             }
-            message.channel.send(messageEmbed);
+            message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 60000 }));
         }
         else if (strippedEventsCommand.indexOf('warning') >= 0) {
             const stripWarning = strippedEventsCommand.replace('warning', '').trim();
@@ -202,13 +204,14 @@ client.on('message', message => {
                 case '6':
                     messageEmbed.setTitle('__MAINSTREAM RULE: 6__');
                     messageEmbed.setDescription(`**Manipulation** \n` +
-                    `Deception is condemned. This means no catfishing, lying, controlling others to do what you want. This is not tolerated since the feelings of a person is involved.` +
-                    `As you can see on the side, we have quite a selection of channels for you to enjoy. So please use the channels accorrding to its purpose.`);
+                        `Deception is condemned. This means no catfishing, lying, controlling others to do what you want. This is not tolerated since the feelings of a person is involved.` +
+                        `As you can see on the side, we have quite a selection of channels for you to enjoy. So please use the channels accorrding to its purpose.`);
                     break;
                 default:
                     messageEmbed.setDescription(`**Please read the rules and regulations in the <#${rulesChannelID}> channel.**`);
                     break;
             }
+            message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 60000 }));
         }
     }
     // rawr Command
