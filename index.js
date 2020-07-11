@@ -275,7 +275,7 @@ client.on('guildMemberRemove', member => {
     const genchatChannel = member.guild.channels.cache.find(ch => ch.id === genChannelID);
     const messageEmbed = new MessageEmbed();
     if (genchatChannel) {
-        messageEmbed.setTitle(`Maraming Salamat sa pag bisita sa Batang Pasaway PH`);
+        messageEmbed.setTitle(`Babye! Balik ka next time welcome ka parin!`);
         messageEmbed.setDescription('Sana ay nag enjoy ka sa pagtambay sa aming muntinig tahanan');
         messageEmbed.Color = 834242;
         messageEmbed.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
