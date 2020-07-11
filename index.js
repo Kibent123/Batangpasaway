@@ -31,9 +31,15 @@ bot.on('message', message => {
     // Trigger if !embed command is used
     if (embedIndex >= 0) {
         if (botChannel) {
-            Embed.setTitle("Server Info")
+            Embed.setTitle("Next Events!")
             Embed.setColor(0xFF0000)
-            Embed.setDescription("Make sure to use the !help to get access to the commands.");
+            Embed.setDescription("");
+            Embed.setImage("https://media.discordapp.net/attachments/731070617670909973/731386377345695884/bpevents.png?width=1015&height=677")
+                .addField("🤔", "(14, TUES) Mini-games", false)
+                .addField("(18, FRI) Bingo Night", false)
+                .addField("😱", "(19 SAT) Jamming Night", false)
+                .addField("🙄", "an g:219069250692841473>", "these last two", true)
+                .addField("<:thonkang:219069250692841473>", "are inline fields", true)
             botChannel.send(Embed);
         };
         if (genchatChannel) {
@@ -41,7 +47,7 @@ bot.on('message', message => {
             Embed.setColor(0xFF0000)
             Embed.setDescription("Please make sure to use the !embed commands on <#679272688644128789> channel only. Thank you");
             genchatChannel.send(Embed);
-            
+
         };
     }
     if (cuteIndex >= 0) {
@@ -69,7 +75,7 @@ bot.on('message', message => {
         else {
             Embed.setDescription("Welcome Sir Kei. What can I do for you today Sir?");
         }
-        currentChannel.send(Embed); 
+        currentChannel.send(Embed);
     }
     if (katerinaIndex >= 0 && (message.member.id === '270486410035855360' || message.member.id === '644417531154661376')) {
         Embed.setTitle("Katerina");
@@ -85,7 +91,7 @@ bot.on('message', message => {
         currentChannel.send(Embed);
     }
     const genericBotIndex = message.content.toString().toLowerCase().indexOf('master');
-    if (genericBotIndex >= 0 && (message.member.id === '270486410035855360' ||  message.member.id === '624545972185464832')) {
+    if (genericBotIndex >= 0 && (message.member.id === '270486410035855360' || message.member.id === '624545972185464832')) {
         Embed.setTitle("Celestial Being");
         Embed.setColor([63, 154, 255]);
         Embed.setDescription("JARVIS is an A.I. created by KEI and KATERINA is a random human being created by KEVIN");
