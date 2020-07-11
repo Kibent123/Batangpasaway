@@ -2,23 +2,7 @@ const { Client, MessageEmbed, Channel, Message } = require('discord.js');
 const { url } = require('inspector');
 const client = new Client();
 
-// adminMembers 
-const adminList = [
-    '504034019802087444',
-    '438195621778685963',
-    '520912625954193428',
-    '713235902201200750',
-    '270486410035855360',
-    '693005181352411148',
-    '295024792002756611',
-    '318522178855370753',
-    '662963912559427607',
-    '622307049002237956',
-    '431991253471854593',
-    '200624174568308736',
-    '367959516882403329',
-    '624545972185464832'
-];
+
 const defaultColor = 0xFF0000;
 // channel ID's
 const botChannelID = '679272688644128789'; // bot-channel ID
@@ -36,6 +20,23 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
+    // adminMembers 
+    const adminList = [
+        '504034019802087444',
+        '438195621778685963',
+        '520912625954193428',
+        '713235902201200750',
+        '270486410035855360',
+        '693005181352411148',
+        '295024792002756611',
+        '318522178855370753',
+        '662963912559427607',
+        '622307049002237956',
+        '431991253471854593',
+        '200624174568308736',
+        '367959516882403329',
+        '624545972185464832'
+    ];
     const messageEmbed = new MessageEmbed();
 
 
@@ -45,13 +46,9 @@ client.on('message', message => {
     const jarvisCommand = message.content.toString().toLowerCase().indexOf('jarvis');
     const keterinaCommand = message.content.toString().toLowerCase().indexOf('katerina');
     const rawrCommand = message.content.toLowerCase().indexOf('rawr');
-
+    
     // IS THE SENDER ADMIN
-    const isAdmin = adminList.indexOf(message.member.user.id);
-
-    // insert channel path
-    const currentChannel = message.guild.channels.cache.find(ch => ch.id === message.channel.id);
-
+    const isAdmin = adminList.indexOf(message.author.id);
 
     // !say Command
     if (!message.author.bot && sayCommand == 0) {
@@ -244,6 +241,6 @@ client.on('guildMemberRemove', member => {
     }
 });
 
- 
 
-    client.login(process.env.token);
+
+client.login(process.env.token);
