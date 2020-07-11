@@ -69,7 +69,7 @@ client.on('message', message => {
         if (strippedEventsCommand.indexOf('events') >= 0) {
             if (message.channel.id !== annoChannelID) {
                 messageEmbed.setDescription(`**Please use the !bp commands on <#${botChannelID}> channel ONLY.**`);
-                message.channel.send(messageEmbed);
+                message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 60000 }));;
             } else {
                 messageEmbed.setTitle("BATANG PASAWAWY PH")
                 messageEmbed.setDescription("U p c o m i n g E v e n t s: 2 0 2 0")
