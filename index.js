@@ -41,7 +41,7 @@ bot.on('message', message => {
                 .addField("(21, TUES) Mini-games","--------")
                 .addField("(24, FRI) Bingo Night","--------")
                 .addField("(25, SAT) Jamming Night","--------")
-            currentChannel.send(Embed);
+            message.channel.send(Embed);
         };
         if (genchatChannel) {
             Embed.setTitle("Channel usage rule")
