@@ -1,113 +1,139 @@
-const { Client, MessageEmbed, Message, } = require('discord.js');
-const client = new Client();
-
-const messageMethod = new Message();
-
-// Add channel ID
-const genChatID = '731168540140503161';
-const botChannelID = '679272688644128789';
-const botStatusChannelID = '731403888757833798';
+const { Client, MessageEmbed, Channel, Message } = require('discord.js');
+const bot = new Client();
 
 
-// adminMembers 
+const PREFIX = '!';
+
+bot.on('ready', () => {
+    console.log('Open na!');
+})
+
+bot.on('message', message => {
+
+    // check custom command
+    const eventQueueIndex = message.content.toString().toLowerCase().indexOf('!eventqueue');
+    const cuteIndex = message.content.toString().toLowerCase().indexOf('cute');
+    const embedIndex = message.content.toString().toLowerCase().indexOf('!embed');
+    const sayIndex = message.content.toString().toLowerCase().indexOf('!say');
+    const jarvisIndex = message.content.toString().toLowerCase().indexOf('jarvis');
+    const katerinaIndex = message.content.toString().toLowerCase().indexOf('katerina');
+
+    // insert channel path
+    const botChannel = message.guild.channels.cache.find(ch => ch.id === "679272688644128789");
+    const genchatChannel = message.guild.channels.cache.find(ch => ch.id === "731168540140503161");
+    const eventsChannel = message.guild.channels.cache.find(ch => ch.id === "707087844895883324");
+    const currentChannel = message.guild.channels.cache.find(ch => ch.id === message.channel.id);
 
 
-// Bot Settings
-const defaultColor = 0xFF0000;
 
-// Tag format
-// <@ userID > Sample =  <@270486410035855360>
-client.on('ready', () => {
-    // channel path 
-    const botStatusChannel = client.channels.cache.find(ch => ch.id === botStatusChannelID);
-    botStatusChannel.send(`BP-bot is: **${client.user.presence.status.toLocaleUpperCase()}** \nLast Run: **${new Date()}** \n <@270486410035855360>`);
-});
 
-client.on('message', message => {
-    try {
-        const adminList = [
-            '504034019802087444',
-            '438195621778685963',
-            '520912625954193428',
-            '713235902201200750',
-            '270486410035855360',
-            '693005181352411148',
-            '295024792002756611',
-            '318522178855370753',
-            '662963912559427607',
-            '622307049002237956',
-            '431991253471854593',
-            '200624174568308736',
-            '367959516882403329',
-        ];
-        const bot = new MessageEmbed();
-        if(message.author.bot) { return }
-        // check custom command
-        const isEventCommand = message.content.toLowerCase().indexOf('!eventqueue')  >= 0;
-        const isSayCommand = message.content.indexOf('!say');
-        const isAdmin = adminList.indexOf(message.member.id);
-        // check if !embed commands was sent on genChat
-        if (isEventCommand  >= 0) {
-            if (message.channel.id !== botChannelID) {
-                bot.setTitle("Channel usage rule")
-                bot.setColor(0xFF0000)
-                bot.setDescription("Please make sure to use the !bot commands on <#679272688644128789> channel only. Thank you");
-                message.channel.send(bot);
-            } else {
-                // check if sender is an admin
-                // if () {
-                //     // Sample request format: [ 'name|value', 'name|value' ];
-                //     var x = ['Sample Event Name|Sample Event Value', 'Sample Event Name1|Sample Event Value1'];
-                //     x.forEach(element => {
-    
-                //     });
-                //     var eventQueue = message.content.split('!eventqueue')[1];
-                //     var eventList = eventQueue.split('|');
-                //     var listParticipant = '';
-                //     for (let index = 0; index < eventList.length; index++) {
-                //         listParticipant = listParticipant + `${index + 1}.${eventList[index]} \n`;
-                //     }
-                //     currentChannel.send(listParticipant);
-                // }
-                // array.forEach(element => {
-    
-                //});
-            }
-        }
-        if (isSayCommand >= 0) {
-            // !say im bored
-            if (isAdmin >= 0) {
-                bot.setTitle('BP Bot says');
-                bot.setColor(defaultColor);
-                bot.setDescription(`Master ${message.member.user.username} wants me to say: ${message.content.split('!say')[1]} \n`);
-                message.channel.send(bot);
-            } else {
-                bot.setTitle('BP-bot warning');
-                bot.setColor(defaultColor);
-                bot.setDescription(`You do not have the permission to use the **!say** command. \n\n\n This message will self destruct in 5 seconds... `);
-                message.channel.send(bot);
-                   
-            }
-        }
-    } catch (error) {
-        message.channel.send(error.message);
+    const Embed = new MessageEmbed();
+    // Trigger if !embed command is used
+    if (embedIndex >= 0) {
+        if (currentChannel)  {
+            Embed.setTitle("Next Events!")
+            Embed.setColor(0xFF0000)
+            Embed.setDescription("BATANG PASAWAY EVENTS");
+            Embed.setImage("https://media.discordapp.net/attachments/681100184389681152/731391215513370654/image0.png?width=1441&height=461")
+                .addField("(14, TUES) Mini-games", "--------")
+                .addField("(18, FRI) Bingo Night", "--------")
+                .addField("(19, SAT) Jamming Night", "--------")
+                .addField("(21, TUES) Mini-games", "--------")
+                .addField("(24, FRI) Bingo Night", "--------")
+                .addField("(25, SAT) Jamming Night", "--------")
+            message.channel.send(Embed);
+        };
+        if (genchatChannel) {
+            Embed.setTitle("Channel usage rule")
+            Embed.setColor(0xFF0000)
+            Embed.setDescription("Please make sure to use the !embed commands on <#679272688644128789> channel only. Thank you");
+            genchatChannel.send(Embed);
+
+        };
     }
+    if (cuteIndex >= 0) {
+
+        Embed.setTitle("Batang Pasaway Bot Approves")
+        Embed.setColor(0xFF0000)
+        Embed.setDescription("Oo pero mas cute si Kevin at Kei!");
+        genchatChannel.send(Embed);
+    }
+
+
+    if (sayIndex >= 0 && message.member.permissions.has('ADMINISTRATOR')) {
+        const currentChannel = message.guild.channels.cache.find(ch => ch.id === message.channel.id);
+        currentChannel.send(message.content.split('!say')[1]);
+
+    }
+    if (jarvisIndex >= 0 && message.member.id === '624545972185464832') {
+        Embed.setTitle("Jarvis");
+        Embed.setColor([63, 154, 255]);
+        if (message.content.toString().toLowerCase().indexOf('regards') >= 0) {
+            Embed.setDescription("Master Kei sends his regards. Please enjoy your stay here!");
+        } else if (message.content.toString().toLowerCase().indexOf('welcome') >= 0) {
+            Embed.setDescription("Master Kei sends his warm welcome for you. I hope you enjoy your stay here.");
+        }
+        else {
+            Embed.setDescription("Welcome Sir Kei. What can I do for you today Sir?");
+        }
+        currentChannel.send(Embed);
+    }
+    if (katerinaIndex >= 0 && (message.member.id === '270486410035855360' || message.member.id === '644417531154661376')) {
+        Embed.setTitle("Katerina");
+        Embed.setColor([63, 154, 255]);
+        if (message.content.toString().toLowerCase().indexOf('ily') >= 0) {
+            Embed.setDescription("Hi Sean Where do you wanna teleport");
+        } else if (message.content.toString().toLowerCase().indexOf('pls') >= 0) {
+            Embed.setDescription("Higupin kita hanggang huling hininga mo");
+        }
+        else {
+            Embed.setDescription("Welcome Sir Kevin Pogi. What can I do for you today Sir?");
+        }
+        currentChannel.send(Embed);
+    }
+    const genericBotIndex = message.content.toString().toLowerCase().indexOf('master');
+    if (genericBotIndex >= 0 && (message.member.id === '270486410035855360' || message.member.id === '624545972185464832')) {
+        Embed.setTitle("Celestial Being");
+        Embed.setColor([63, 154, 255]);
+        Embed.setDescription("JARVIS is an A.I. created by KEI and KATERINA is a random human being created by KEVIN");
+        currentChannel.send(Embed);
+    }
+
+    if (eventQueueIndex >= 0 && message.member.permissions.has('ADMINISTRATOR')) {
+        var eventQueue = message.content.split('!eventqueue')[1];
+        var eventList = eventQueue.split('|');
+        var listParticipant = '';
+        for (let index = 0; index < eventList.length; index++) {
+            listParticipant = listParticipant + `${index + 1}.${eventList[index]} \n`;
+        }
+        currentChannel.send(listParticipant);
+    }
+    const isRawr = message.content.toLowerCase().indexOf('rawr');
+    if (!message.author.bot && isRawr >= 0) {
+        message.channel
+            .send('Rawr! RaWr! RaaaWr!')
+            .then((response) => response.delete({ timeout: 5000 }));
+    }
+
+
 });
 
 
 
-client.on('guildMemberAdd', member => {
-    const genchatChannel = member.guild.channels.cache.find(ch => ch.id === genChatID);
-    const bot = new MessageEmbed();
+bot.on('guildMemberAdd', member => {
+    const genchatChannel = member.guild.channels.cache.find(ch => ch.id === "731168540140503161");
+    const RichEmbedVar = new MessageEmbed();
+
+
     if (genchatChannel) {
-        bot.setTitle("WELCOME TO BATANG PASAWAY: " + "" + member.user.username + "");
-        bot.setDescription("WELCOME! Feel Free to Join VC's! \n I hope you enjoy your stay here at Batang Pasaway PH \n\n Please read the <#679274762010099724> and do some <#679288499484098560> \n\n After that head to <#679451760393322499>  to get yourself one or even many! \n\n\n\n Enjoy your stay and start chatting! \n\n\n\n");
-        bot.Color = 834242;
-        bot.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
-        bot.setImage(member.user.displayAvatarURL());
-        bot.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
-        genchatChannel.send(bot);
-    }
+        RichEmbedVar.setTitle("WELCOME TO BATANG PASAWAY: " + "" + member.user.username + "");
+        RichEmbedVar.setDescription("WELCOME! Feel Free to Join VC's! \n I hope you enjoy your stay here at Batang Pasaway PH \n\n Please read the <#679274762010099724> and do some <#679288499484098560> \n\n After that head to <#679451760393322499>  to get yourself one or even many! \n\n\n\n Enjoy your stay and start chatting! \n\n\n\n");
+        RichEmbedVar.Color = 834242;
+        RichEmbedVar.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
+        RichEmbedVar.setImage(member.user.displayAvatarURL());
+        RichEmbedVar.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
+        genchatChannel.send(RichEmbedVar);
+    };
 });
 
-client.login('NzI4OTgzNzE5NDMxMzcyODIw.Xwlh6g.PCovADUJ_1zvlU53PaJpcjYdH6w');
+bot.login(process.env.token);
