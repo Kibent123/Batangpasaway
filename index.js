@@ -49,9 +49,9 @@ client.on('message', message => {
         messageEmbed.setColor(defaultColor);
 
         if (isAdmin >= 0) {
-            messageEmbed.setTitle('SERVER ANNOUNCEMENT');
+            messageEmbed.setTitle('SERVER ANNOUNCEMENT!');
             messageEmbed.setDescription(`**${message.content.toLowerCase().split('!say')[1].toUpperCase()}**`);
-            messageEmbed.setFooter(`THANK YOU FOR YOUR COOPERATION);
+            messageEmbed.setFooter(`THANK YOU FOR YOUR COOPERATION`);
             message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 10000 }));
         } else {
             messageEmbed.setTitle('Hmmmmmm~ batang pasaway ALERT');
