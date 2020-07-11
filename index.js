@@ -47,7 +47,7 @@ client.on('message', message => {
     const rawrCommand = message.content.toLowerCase().indexOf('rawr');
 
     // IS THE SENDER ADMIN
-    const isAdmin = adminList.indexOf(message.member.id);
+    const isAdmin = adminList.indexOf(message.member.user.id);
 
     // insert channel path
     const currentChannel = message.guild.channels.cache.find(ch => ch.id === message.channel.id);
