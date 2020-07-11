@@ -46,7 +46,7 @@ client.on('message', message => {
     const jarvisCommand = message.content.toString().toLowerCase().indexOf('jarvis');
     const keterinaCommand = message.content.toString().toLowerCase().indexOf('katerina');
     const rawrCommand = message.content.toLowerCase().indexOf('rawr');
-    
+
     // IS THE SENDER ADMIN
     const isAdmin = adminList.indexOf(message.author.id);
 
@@ -94,69 +94,69 @@ client.on('message', message => {
             const stripReminder = strippedEventsCommand.replace('reminder', '').trim();
             switch (stripReminder) {
                 case '1':
-                    messageEmbed.setTitle('__CHANNEL RULES: 1__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 1__');
                     messageEmbed.setDescription(`We condemn swearing in this server.` +
                         `\n> __**Voice Channels**__: *If you're with friends you may, but please keep it in moderation. **BUT** swearing at someone without valid reason- will result to a warning.*` +
                         `\n> __**Text Channels**__: *Absolutely NOT. The list of vulgar and inapproproate words are listed below.*`);
                     break;
                 case '2':
-                    messageEmbed.setTitle('__CHANNEL RULES: 2__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 2__');
                     messageEmbed.setDescription('*Only converse in **English**, **Tagalog**, other **Filipino** dialects, **Japanese**, and **Korean**. Any __other language__ that is not stated is not to be spoken.*');
                     break;
                 case '3':
-                    messageEmbed.setTitle('__CHANNEL RULES: 3__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 3__');
                     messageEmbed.setDescription('*No **\"ear-rape\"** in voice channels. If you are in a noisy environment, **please use push to talk.** Do not be overly excited.*');
                     break;
                 case '4':
-                    messageEmbed.setTitle('__CHANNEL RULES: 4__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 4__');
                     messageEmbed.setDescription('Only **__ONE BOT in VC.__** Don\'t occupy more than one bot, so that others may use the rest.');
                     break;
                 case '5':
-                    messageEmbed.setTitle('__CHANNEL RULES: 5__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 5__');
                     messageEmbed.setDescription(`*Server role perks are only applicable in <#${gen2ChannelID}>. Due to #deleted-channel being the main channel, if role perks are applied, it might be abused and may fall into a state of chaos. Abusing your role perks may cause you warn from mods or uninstallation of your role.*`);
                     break;
                 case '6':
-                    messageEmbed.setTitle('__CHANNEL RULES: 6__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 6__');
                     messageEmbed.setDescription(`*Spamming is discouraged when done in any channel other than <#${spamChannelID}>. This includes, spamming words and mentioning @/someone repeatedly. No repeated joining/leaving the server, this also counts as spamming.*`);
                     break;
                 case '7':
-                    messageEmbed.setTitle('__CHANNEL RULES: 7__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 7__');
                     messageEmbed.setDescription(`**__Abusing the channels__**\n
                     > *As we said, use the text and voice channels according to its specific purpose. Don't disrespect the channel's uniqueness, why use it for anything else?*\n
                     > *The general chat is made for chatting only. If you want to use Yggdrasil, please use <#${gen2ChannelID}> or <#${botChannelID}> This has been said many times, that's why <#${gen2ChannelID}> exists.*`);
                     break;
                 case '8':
-                    messageEmbed.setTitle('__CHANNEL RULES: 8__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 8__');
                     messageEmbed.setDescription(`Repetitive use of: \n
                     Pls **WARN**, **BAN**, or **KICK** \n
                     Using __@/everyone__ or __@/here__\n
                     > *You don't have permission to do so, so it mentions no one. But still, it will result to a violation. (**__makalat kasi so please wag nang gawin__**)*`);
                     break;
                 case '9':
-                    messageEmbed.setTitle('__CHANNEL RULES: 9__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 9__');
                     messageEmbed.setDescription(`**__Alternate Accounts (Alts/ Alt Accs)__**\n
                     > *The problem with alternate accounts is that it confuses the members and moderation in the server. **Stay loyal, one is enough.***`);
                     break;
                 case '10':
-                    messageEmbed.setTitle('__CHANNEL RULES: 10__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 10__');
                     messageEmbed.setDescription(`**__Raiding & Trolling__**\n
                     > *Raiding is not allowed. It does not benefit the server in a good way whatsoever. Please, just don't raid the server.* \n
                     > *Trolling is not tolerated when it has gone too far. There's a difference between harmless fun and trolling. Think before you speak, do not cross the line.*`);
                     break;
                 case '11':
-                    messageEmbed.setTitle('__CHANNEL RULES: 11__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 11__');
                     messageEmbed.setDescription(`**__Voice Modifications__**
                     > *The use of voice modifications are prohibited. These include voice changer users.*`);
                     break;
                 case '12':
-                    messageEmbed.setTitle('__CHANNEL RULES: 12__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 12__');
                     messageEmbed.setDescription(`**__Not Tinder/Dating Platform__**
                     > *This is not a place for people who want to make **LANDI.** \n
                     * This server is a place where people can make friends, not jowas. There are other servers that allow that. And let us remind you of the well-known hashtag in the server, \n
                     **__#NOTOTINDERCORD__**`);
                     break;
                 case '13':
-                    messageEmbed.setTitle('__CHANNEL RULES: 13__');
+                    messageEmbed.setTitle('__CHANNEL RULE: 13__');
                     messageEmbed.setDescription(`**__Advertising__**\n
                     > *Advertising a server is not allowed. If you wish to become a server partner, please proceed to ping or dm the <@Server Partnership Manager>.\n
                     *However, advertising your social media, youtube channel, and such is allowed as long as it is done in <#${promChannelID}>`);
@@ -165,8 +165,56 @@ client.on('message', message => {
                     messageEmbed.setDescription(`**Please read the rules and regulations in the <#${rulesChannelID}> channel.**`);
                     break;
             }
-
             message.channel.send(messageEmbed);
+        }
+        else if (strippedEventsCommand.indexOf('warning') >= 0) {
+            const stripWarning = strippedEventsCommand.replace('warning', '').trim();
+            switch (stripWarning) {
+                case '1':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 1__');
+                    messageEmbed.setDescription(`**__Everyone must follow the Discord ToS and Discord Community Guidelines.__** \n` +
+                        `We are against the following:` +
+                        `> **Harassment** \n` +
+                        `> **Discrimination** \n` +
+                        `> **Threat** \n` +
+                        `> **Evasion** \n` +
+                        `> **Phishing** \n` +
+                        `> **Users with age of 12 & below (will be kicked out)**`);
+                    break;
+                case '2':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 2__');
+                    messageEmbed.setDescription(`*Please do not disrespect the staff, this includes the Moderators and Administrators. Also, even if someone is not a member of the staff, respect them. As said, **DON'T BE PASAWAY.***`);
+                    break;
+                case '3':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 3__');
+                    messageEmbed.setDescription(`**__Personal info (P.I.)__** \n` +
+                        `**DOXXING** *such as sharing and publishing information of a particular individual is not allowed. Enough said, please respect others’ private information.*` +
+                        `*Do not force someone to spill out any of their P.I. if they do not want it. (**__Do not influence someone else to convince that person either. Peer pressure is a NO NO__**) \n` +
+                        `*It is **YOUR** choice if you choose to share your social media accounts or any personal info but please be mindful of your actions. If anything happens; it is your responsibility and we're out of it.*`);
+                    break;
+                case '4':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 4__');
+                    messageEmbed.setDescription(`**__Feuds__** \n` +
+                        `We do not condone any fights here (__especially if it happened in a different __). What happens in that server stays there. \n` +
+                        `Avoid getting into heated arguments, as this could turn into a fight. When push comes to shove, please resolve it privately and respectfully. \n` +
+                        `Offensive jokes are not allowed as these may lead to unintentional arguments.`);
+                    break;
+                case '5':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 5__');
+                    messageEmbed.setDescription(`**__NSFW__** \n` +
+                        `***ANY** I repeat, **ANY** form of NSFW content (emojis, pictures, videos, etc.) is __not allowed here.__ This is a major violation that will immediately result to a **mute**, a **BAN**, or **BOTH.** \n` +
+                        `*Inappropriate profile picture or nickname is prohibited. When a moderator or admin asks you to change your pfp or nickname or anything for the sake of the server, do it. Failure to follow three times will result to a warning.*`);
+                    break;
+                case '6':
+                    messageEmbed.setTitle('__MAINSTREAM RULE: 6__');
+                    messageEmbed.setDescription(`**Manipulation** \n` +
+                    `Deception is condemned. This means no catfishing, lying, controlling others to do what you want. This is not tolerated since the feelings of a person is involved.` +
+                    `As you can see on the side, we have quite a selection of channels for you to enjoy. So please use the channels accorrding to its purpose.`);
+                    break;
+                default:
+                    messageEmbed.setDescription(`**Please read the rules and regulations in the <#${rulesChannelID}> channel.**`);
+                    break;
+            }
         }
     }
     // rawr Command
