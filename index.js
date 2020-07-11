@@ -220,7 +220,7 @@ client.on('message', message => {
             .then((response) => response.delete({ timeout: 3000 }));
     }
     // JARVIS 
-    if (!message.author.bot && jarvisCommand >= 0 && message.member.id === '624545972185464832') {
+    if (!message.author.bot && jarvisCommand >= 0 && (message.member.id === '624545972185464832' || message.member.id === '504034019802087444')) {
         messageEmbed.setColor([63, 154, 255]);
         const removedJarvis = message.content.replace('jarvis', '').toString();
         if (removedJarvis.indexOf('regards') >= 0) {
