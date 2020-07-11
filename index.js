@@ -30,7 +30,7 @@ bot.on('message', message => {
     const Embed = new MessageEmbed();
     // Trigger if !embed command is used
     if (embedIndex >= 0) {
-        if (botChannel) {
+        if (currentChannel) {
             Embed.setTitle("Next Events!")
             Embed.setColor(0xFF0000)
             Embed.setDescription("BATANG PASAWAY EVENTS");
@@ -41,7 +41,7 @@ bot.on('message', message => {
                 .addField("(21, TUES) Mini-games","hmmm_Curse:")
                 .addField("(24, FRI) Bingo Night","hmmm_Curse:")
                 .addField("(25, SAT) Jamming Night","hmmm_Curse:")
-            botChannel.send(Embed);
+            currentChannel.send(Embed);
         };
         if (genchatChannel) {
             Embed.setTitle("Channel usage rule")
