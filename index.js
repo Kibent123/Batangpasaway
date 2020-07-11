@@ -37,7 +37,7 @@ client.on('message', message => {
     // check custom command
     const bpCommand = message.content.toString().toLowerCase().indexOf('!bp');
     const sayCommand = message.content.indexOf('!say');
-    const jarvisCommand = message.content.toString().toLowerCase().indexOf('jarvis');
+    const jarvisCommand = message.content.toString().toLowerCase().indexOf('love');
     const keterinaCommand = message.content.toString().toLowerCase().indexOf('katerina');
     const rawrCommand = message.content.toLowerCase().indexOf('rawr');
 
@@ -222,19 +222,19 @@ client.on('message', message => {
     // JARVIS 
     if (!message.author.bot && jarvisCommand >= 0 && (message.member.id === '624545972185464832' || message.member.id === '504034019802087444')) {
         messageEmbed.setColor([63, 154, 255]);
-        const removedJarvis = message.content.replace('jarvis', '').toString();
+        const removedJarvis = message.content.replace('love', '').toString();
         if (removedJarvis.indexOf('regards') >= 0) {
-            messageEmbed.setTitle("Master Kei sends his regards. Please enjoy your stay here!");
+            messageEmbed.setTitle("Hi Love!! I would like to sends my regards. Please enjoy your stay here!");
         } else if (removedJarvis.indexOf('welcome') >= 0) {
-            messageEmbed.setTitle("Master Kei sends his warm welcome for you. I hope you enjoy your stay here.");
+            messageEmbed.setTitle("Hi Love!! Welcome to our lovely server. I hope you enjoy your stay here.");
         } else if (removedJarvis.indexOf('goodnight') >= 0 || removedJarvis.indexOf('good night') >= 0) {
-            messageEmbed.setTitle(`Goodnight, Sir Kei. You deserve this sleep.`);
+            messageEmbed.setTitle(`Goodnight, Love. Love you!!.`);
         } else if (removedJarvis.indexOf('goodmorning') >= 0 || removedJarvis.indexOf('good morning') >= 0) {
-            messageEmbed.setTitle(`Good morning, Sir Kei. What can I do for you today?`);
+            messageEmbed.setTitle(`Good morning, Love!! What can I do for you today?`);
         } else if (removedJarvis.indexOf('goodevening') >= 0 || removedJarvis.indexOf('good evening') >= 0) {
-            messageEmbed.setTitle(`Good Evening, Sir Kei. What can I do for you tonight?`);
+            messageEmbed.setTitle(`Good Evening, Love!! What can I do for you tonight?`);
         } else {
-            messageEmbed.setTitle("I\'m here Sir. What can I do for you?");
+            messageEmbed.setTitle("I\'m here Love. What can I do for you?");
         }
         message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 10000 }));
     }
