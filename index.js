@@ -112,11 +112,11 @@ bot.on('guildMemberAdd', member => {
 
     if (genchatChannel) {
         RichEmbedVar.setTitle("WELCOME TO BATANG PASAWAY: " + "" + member.user.username + "");
-        RichEmbedVar.setDescription("W E L C O M E Feel Free to Join VC's! \n I hope you enjoy your stay here at Batang Pasaway PH \n\n Please read the <#679274762010099724> and <#679451760393322499> \n\n After that head to <#679288499484098560>  to get yourself one or even many! \n\n\n\n Enjoy your stay and start chatting! \n\n\n\n");
+        RichEmbedVar.setDescription("WELCOME! Feel Free to Join VC's! \n I hope you enjoy your stay here at Batang Pasaway PH \n\n Please read the <#679274762010099724> and do some <#679288499484098560> \n\n After that head to <#679451760393322499>  to get yourself one or even many! \n\n\n\n Enjoy your stay and start chatting! \n\n\n\n");
         RichEmbedVar.Color = 834242;
         RichEmbedVar.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
         RichEmbedVar.setImage(member.user.displayAvatarURL());
-        RichEmbedVar.setAuthor("JARVIS-KK", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
+        RichEmbedVar.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
         genchatChannel.send(RichEmbedVar);
     };
 });
