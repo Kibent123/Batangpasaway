@@ -52,7 +52,7 @@ client.on('message', message => {
             messageEmbed.setTitle('SERVER ANNOUNCEMENT!');
             messageEmbed.setDescription(`**${message.content.toLowerCase().split('!say')[1].toUpperCase()}**`);
             messageEmbed.setFooter(`THANK YOU FOR YOUR TIME`);
-            message.channel.send(messageEmbed).then((response) => response.delete({ timeout: 10000 }));
+            message.channel.send(messageEmbed);
         } else {
             messageEmbed.setTitle('Hmmmmmm~ batang pasaway ALERT');
             messageEmbed.setDescription(`.\n.\nWag ng pilitin.\nDi pa pwede sayo ang **!say** kasi wala ka pang say.\n.\n.\n`);
