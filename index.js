@@ -10,7 +10,7 @@ const annoChannelID = '679447415371333668'; // announcement-channel ID
 const rulesChannelID = '731379484946727003' // rules-channel ID
 const spamChannelID = '679257174811082774' // spam-channel ID
 const promChannelID = '721306801211047936' // promotions-channel ID
-
+const mgaChannelID = '690841521217339463' // MGA TUMIWALAG-channel ID
 client.on('ready', () => { console.log('Open na!'); });
 
 client.on('message', message => {
@@ -272,7 +272,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
-    const genchatChannel = member.guild.channels.cache.find(ch => ch.id === genChannelID);
+    const mgaChannelID = member.guild.channels.cache.find(ch => ch.id === mgaChannelID);
     const messageEmbed = new MessageEmbed();
     if (genchatChannel) {
         messageEmbed.setTitle(`Babye! Balik ka next time welcome ka parin!`);
@@ -281,7 +281,7 @@ client.on('guildMemberRemove', member => {
         messageEmbed.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
         messageEmbed.setImage(member.user.displayAvatarURL());
         messageEmbed.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
-        genchatChannel.send(messageEmbed);
+        mgaChannelID.send(messageEmbed);
     }
 });
 
