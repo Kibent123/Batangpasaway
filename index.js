@@ -76,7 +76,7 @@ client.on('message', message => {
                 messageEmbed.setColor([63, 154, 255]);
                 messageEmbed.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
                 messageEmbed.setImage("https://media.discordapp.net/attachments/681100184389681152/731391215513370654/image0.png?width=1441&height=461")
-                    .addField("(14, TUES) Mini-games", "--------")
+                    .addField("(14, TODAY!) Mini-games at 7PM PHT!", "--------")
                     .addField("(18, FRI) Bingo Night", "--------")
                     .addField("(19, SAT) Jamming Night", "--------")
                     .addField("(21, TUES) Mini-games", "--------")
