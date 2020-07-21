@@ -271,7 +271,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
-    const genchatChannel = member.guild.channels.cache.find(ch => ch.id === mgaChannelID);
+    const mgaChannel = member.guild.channels.cache.find(ch => ch.id === mgaChannelID);
     const messageEmbed = new MessageEmbed();
     if (genchatChannel) {
         messageEmbed.setTitle(`Babye! Balik ka next time welcome ka parin!`);
@@ -280,7 +280,7 @@ client.on('guildMemberRemove', member => {
         messageEmbed.setThumbnail("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
         messageEmbed.setImage(member.user.displayAvatarURL());
         messageEmbed.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
-        genchatChannel.send(messageEmbed);
+        mgaChannel.send(messageEmbed);
     }
 });
 
