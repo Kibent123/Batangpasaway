@@ -36,7 +36,7 @@ client.on('message', message => {
     // check custom command
     const bpCommand = message.content.toString().toLowerCase().indexOf('!bp');
     const sayCommand = message.content.indexOf('!say');
-    const jarvisCommand = message.content.toString().toLowerCase().indexOf('love');
+    const jarvisCommand = message.content.toString().toLowerCase().indexOf('krinkei');
     const keterinaCommand = message.content.toString().toLowerCase().indexOf('katerina');
     const rawrCommand = message.content.toLowerCase().indexOf('rawr');
 
