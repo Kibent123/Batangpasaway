@@ -263,7 +263,7 @@ client.on('guildMemberAdd', member => {
         messageEmbed.setTitle(`Welcome to Batang Pasaway PH`);
         messageEmbed.setDescription(`WELCOME <@${member.user.id}>! Feel Free to Join VC's! \n I hope you enjoy your stay here at Batang Pasaway PH \n\n Please read the <#679274762010099724> and do some <#679288499484098560> \n\n After that head to <#679451760393322499>  to get yourself one or even many! \n\n\n\n Enjoy your stay and start chatting! \n\n\n\n`);
         messageEmbed.Color = 834242;
-        messageEmbed.setImage("https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png");
+        messageEmbed.setImage("https://media.discordapp.net/attachments/684751961874235636/738662318380154930/image0-24.png?width=677&height=677");
         messageEmbed.setThumbnail(member.user.displayAvatarURL());
         messageEmbed.setAuthor("BP-Bot", "https://media.discordapp.net/attachments/731061289744334868/731129635349463040/123s.png", "https://discord.gg/7Mz6g6");
         genchatChannel.send(messageEmbed);
